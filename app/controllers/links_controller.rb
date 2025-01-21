@@ -20,7 +20,7 @@ class LinksController < ApplicationController
       end
     else
       index
-      rnder :index, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -47,9 +47,6 @@ class LinksController < ApplicationController
     params.require(:link).permit(:url)
   end
 
-  def set_link
-    @link = Link.find(params[:id])
-  end
 
   def check_if_editable
     unless @link.editable_by?(current_user)
