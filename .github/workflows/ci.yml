@@ -1,7 +1,7 @@
 name: Tests
 
 on:
-  pull_requests:
+  pull_request:
     branches:
       - "*"
   push:
@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    services: 
+    services:
       postgres:
         image: postgres:latest
         env:
@@ -19,12 +19,12 @@ jobs:
           POSTGRES_PASSWORD: password
         ports: ["5432:5432"]
 
-     steps:
-       - uses: actions/checkout@v4
-       - name: Setup Ruby
-         uses: ruby/setup-ruby@v1
-         with:
-           bundler-cache: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
