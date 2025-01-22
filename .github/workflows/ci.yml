@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     services: 
       postgres:
         image: postgres:latest
